@@ -1,5 +1,6 @@
 const PORT = 1984;
 
+
 // handles http requests
 const axios = require('axios');
 // parses markup of a web page
@@ -7,6 +8,15 @@ const cheerio = require('cheerio');
 const express = require('express');
 
 const app = express();
+
+// product_scraper router
+const productScraperRouter = require('./routes/product_scraper');
+
+// using ejs as view engine
+app.set('view engine', 'ejs');
+
+// get request for /product_scraper endpoint
+app.use('/product_scraper', productScraperRouter);
 
 // url to scrap
 const url = 'https://www.arredamentistramenga.it/cof-cf-s-200';
